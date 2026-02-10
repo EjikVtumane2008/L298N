@@ -1,94 +1,94 @@
 <html>
 <head>
 <title>Тест по физике</title>
-<script>
-function checkTest() {
-    var score = 0;
-    var total = 3;
-    
-    // Проверка первого вопроса
-    if(document.getElementById('q1c').checked) {
-        score++;
-        document.getElementById('q1result').innerHTML = "✅ Верно! Формула v = s/t";
-    } else {
-        document.getElementById('q1result').innerHTML = "❌ Неверно. Правильно: v = s/t";
-    }
-    
-    // Проверка второго вопроса
-    if(document.getElementById('q2a').checked) {
-        score++;
-        document.getElementById('q2result').innerHTML = "✅ Верно! Это закон Ома";
-    } else {
-        document.getElementById('q2result').innerHTML = "❌ Неверно. Правильно: I = U/R";
-    }
-    
-    // Проверка третьего вопроса
-    var answer = document.getElementById('q3answer').value.toLowerCase();
-    if(answer == "50"  answer == "50 м"  answer == "50 метров") {
-        score++;
-        document.getElementById('q3result').innerHTML = "✅ Верно! s = 5 × 10 = 50 м";
-    } else {
-        document.getElementById('q3result').innerHTML = "❌ Неверно. s = v × t = 5 × 10 = 50 м";
-    }
-    
-    // Показываем результат
-    document.getElementById('result').innerHTML = 
-        "<h3>Ваш результат: " + score + " из " + total + "</h3>" +
-        "<p>" + getMessage(score, total) + "</p>";
-}
-
-function getMessage(score, total) {
-    if(score == total) return "🎉 Отлично! Ты готов к ЕГЭ!";
-    if(score >= total/2) return "👍 Хорошо! Продолжай заниматься!";
-    return "📚 Повтори формулы и попробуй снова!";
-}
-</script>
-<style>
-body { font-family: Arial; background: #f0f8ff; padding: 20px; }
-.question { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px gray; }
-button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; }
-</style>
 </head>
-<body>
+<body bgcolor="#f0f8ff">
 
 <center>
-<h1>🎯 ТЕСТ ПО ФИЗИКЕ</h1>
-<p>Проверь свои знания!</p>
+<h1><font color="#2c3e50">ТЕСТ ПО ФИЗИКЕ</font></h1>
+<p>Проверь себя!</p>
 </center>
 
-<div class="question">
-<h3>1. Формула скорости?</h3>
-<input type="radio" name="q1" id="q1a"> a = v/t<br>
-<input type="radio" name="q1" id="q1b"> F = ma<br>
-<input type="radio" name="q1" id="q1c"> v = s/t<br>
-<div id="q1result" style="margin-top:10px"></div>
-</div>
-
-<div class="question">
-<h3>2. Закон Ома?</h3>
-<input type="radio" name="q2" id="q2a"> I = U/R<br>
-<input type="radio" name="q2" id="q2b"> P = UI<br>
-<input type="radio" name="q2" id="q2c"> Q = I²Rt<br>
-<div id="q2result" style="margin-top:10px"></div>
-</div>
-
-<div class="question">
-<h3>3. Тело движется 10 сек со скоростью 5 м/с. Какой путь?</h3>
-<input type="text" id="q3answer" placeholder="Введите ответ..."><br>
-<div id="q3result" style="margin-top:10px"></div>
-</div>
-
-<center>
-<button onclick="checkTest()">ПРОВЕРИТЬ ОТВЕТЫ</button>
-</center>
-
-<center>
-<div id="result" style="margin-top:20px; padding:20px; background:white; border-radius:10px; max-width:500px;"></div>
-</center>
+<table width="100%" bgcolor="#34495e" cellpadding="10">
+<tr>
+<td align="center">
+<font color="white" size="4">
+<b>
+<a href="index.html" style="color:white; text-decoration:none">ГЛАВНАЯ</a> | 
+<a href="test.html" style="color:white; text-decoration:none">ТЕСТ</a>
+</b>
+</font>
+</td>
+</tr>
+</table>
 
 <br>
+
 <center>
-<a href="index.html"><button style="background:#2c3e50">← На главную</button></a>
+<table width="80%" cellpadding="20">
+<tr>
+<td bgcolor="white" style="border-radius:10px; box-shadow:0 0 10px gray">
+
+<h3>1. Формула скорости:</h3>
+<p><input type="radio" name="q1"> a = v/t</p>
+<p><input type="radio" name="q1"> F = ma</p>
+<p><input type="radio" name="q1"> <b>v = s/t</b> ✓ ПРАВИЛЬНО</p>
+<hr>
+
+<h3>2. Закон Ома:</h3>
+<p><input type="radio" name="q2"> <b>I = U/R</b> ✓ ПРАВИЛЬНО</p>
+<p><input type="radio" name="q2"> P = UI</p>
+<p><input type="radio" name="q2"> Q = I²Rt</p>
+<hr>
+
+<h3>3. Реши задачу:</h3>
+<p><b>Условие:</b> v=5 м/с, t=10 с. Найти s.</p>
+<p><b>Решение:</b> s = v × t = 5 × 10 = 50 м</p>
+<p><b>Ответ: 50 метров</b> ✓ ПРАВИЛЬНО</p>
+
+</td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+<td bgcolor="#e8f4fc" style="border-radius:10px; padding:20px">
+<h3>ПРОВЕРЬ СЕБЯ:</h3>
+<p>✓ Если отметил все правильные ответы - молодец!</p>
+<p>✓ Если ошибся - повтори формулы</p>
+<p>✓ Реши ещё задачи на странице "Задачи"</p>
+</td>
+</tr>
+
+<tr><td><br></td></tr>
+
+<tr>
+<td bgcolor="white" style="border-radius:10px; padding:20px">
+<h3>ОТВЕТЫ ДЛЯ САМОПРОВЕРКИ:</h3>
+<table border="1" cellpadding="10" width="100%">
+<tr bgcolor="#2c3e50" style="color:white">
+<th>Вопрос</th>
+<th>Ответ</th>
+<th>Баллы ЕГЭ</th>
+</tr>
+<tr><td>1</td><td>v = s/t</td><td>1 балл</td></tr>
+<tr><td>2</td><td>I = U/R</td><td>1 балл</td></tr>
+<tr><td>3</td><td>50 м</td><td>2 балла</td></tr>
+</table>
+<p><br>Максимум за этот тест: 4 балла</p>
+</td>
+</tr>
+</table>
+</center>
+
+<br><br>
+
+<center>
+<a href="index.html">
+<button style="background:#3498db; color:white; padding:10px 20px; border:none; font-size:16px">
+← Вернуться на главную
+</button>
+</a>
 </center>
 
 </body>
