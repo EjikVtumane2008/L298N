@@ -1,113 +1,93 @@
 <html>
 <head>
-<title>Тест по физике</title>
+<title>Калькулятор формул</title>
+<script>
+function calculateSpeed() {
+    var s = document.getElementById('speed_s').value;
+    var t = document.getElementById('speed_t').value;
+    if(s && t) {
+        var v = s / t;
+        document.getElementById('speed_result').innerHTML = 
+            "v = s/t = " + s + " / " + t + " = " + v.toFixed(2) + " м/с";
+    }
+}
+
+function calculateForce() {
+    var m = document.getElementById('force_m').value;
+    var a = document.getElementById('force_a').value;
+    if(m && a) {
+        var F = m * a;
+        document.getElementById('force_result').innerHTML = 
+            "F = m×a = " + m + " × " + a + " = " + F.toFixed(2) + " Н";
+    }
+}
+
+function calculateOhm() {
+    var U = document.getElementById('ohm_u').value;
+    var R = document.getElementById('ohm_r').value;
+    if(U && R) {
+        var I = U / R;
+        document.getElementById('ohm_result').innerHTML = 
+            "I = U/R = " + U + " / " + R + " = " + I.toFixed(2) + " А";
+    }
+}
+</script>
 <style>
 body { font-family: Arial; background: #f0f8ff; padding: 20px; }
-.question { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px gray; }
-.answer { padding: 10px; margin: 5px 0; background: #f8f9fa; border-left: 4px solid #3498db; }
-.correct { background: #d4edda; border-left: 4px solid #28a745; }
-.wrong { background: #f8d7da; border-left: 4px solid #dc3545; }
-button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin: 5px; }
-.result { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; text-align: center; }
+.calc-box { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px gray; }
+input { padding: 8px; margin: 5px; width: 100px; }
+button { background: #2ecc71; color: white; padding: 8px 15px; border: none; border-radius: 5px; }
+.result { background: #e8f4fc; padding: 10px; margin-top: 10px; border-radius: 5px; }
 </style>
 </head>
 <body>
 
 <center>
-<h1>🎯 ТЕСТ ПО ФИЗИКЕ</h1>
-<p>Проверь свои знания! Ответы под вопросами</p>
+<h1>🧮 КАЛЬКУЛЯТОР ФОРМУЛ</h1>
+<p>Рассчитай быстро и точно!</p>
 </center>
 
-<div class="question">
-<h3>1. Какая формула для скорости?</h3>
-<div class="answer">
-<strong>v = s/t</strong><br>
-где v - скорость, s - путь, t - время
-</div>
-</div>
-
-<div class="question">
-<h3>2. Что такое закон Ома?</h3>
-<div class="answer correct">
-<strong>✅ I = U/R</strong><br>
-Сила тока прямо пропорциональна напряжению и обратно пропорциональна сопротивлению
-</div>
-<div class="answer wrong">
-❌ P = UI - это формула мощности
-</div>
-<div class="answer wrong">
-❌ Q = I²Rt - это закон Джоуля-Ленца
-</div>
+<div class="calc-box">
+<h3>📏 СКОРОСТЬ: v = s/t</h3>
+<p>Расстояние s (м): <input type="number" id="speed_s"></p>
+<p>Время t (с): <input type="number" id="speed_t"></p>
+<button onclick="calculateSpeed()">РАССЧИТАТЬ</button>
+<div class="result" id="speed_result"></div>
 </div>
 
-<div class="question">
-<h3>3. Тело массой 2 кг подняли на 10 м. Какая работа?</h3>
-<div class="answer">
-<strong>Решение:</strong> A = mgh = 2 × 9.8 × 10 = 196 Дж<br>
-<strong>Ответ: 196 Джоулей</strong>
-</div>
-</div>
-
-<div class="question">
-<h4>4. Формула ускорения?</h4>
-<button onclick="showAnswer('ans1')">Показать ответ</button>
-<div id="ans1" style="display:none; margin-top:10px; padding:10px; background:#e8f4fc">
-a = (v - v₀)/t<br>
-где a - ускорение, v - конечная скорость, v₀ - начальная скорость
-</div>
+<div class="calc-box">
+<h3>⚡ СИЛА: F = m×a</h3>
+<p>Масса m (кг): <input type="number" id="force_m"></p>
+<p>Ускорение a (м/с²): <input type="number" id="force_a"></p>
+<button onclick="calculateForce()">РАССЧИТАТЬ</button>
+<div class="result" id="force_result"></div>
 </div>
 
-<div class="question">
-<h4>5. Как найти путь при равномерном движении?</h4>
-<button onclick="showAnswer('ans2')">Показать ответ</button>
-<div id="ans2" style="display:none; margin-top:10px; padding:10px; background:#e8f4fc">
-s = v × t<br>
-Пример: при v=5 м/с за t=10 с: s=5×10=50 м
-</div>
+<div class="calc-box">
+<h3>🔋 ЗАКОН ОМА: I = U/R</h3>
+<p>Напряжение U (В): <input type="number" id="ohm_u"></p>
+<p>Сопротивление R (Ом): <input type="number" id="ohm_r"></p>
+<button onclick="calculateOhm()">РАССЧИТАТЬ</button>
+<div class="result" id="ohm_result"></div>
 </div>
 
 <center>
-<div class="result">
-<h3>📊 КАК ПРОВЕРИТЬ СЕБЯ:</h3>
-<p>1. Реши задачу на бумаге</p>
-<p>2. Сравни с правильным ответом</p>
-<p>3. Если ошибся - повтори тему</p>
-<p>4. Задай вопрос в комментариях</p>
-</div>
-</center>
-
-<div class="question">
-<h3>📝 ПРАВИЛЬНЫЕ ОТВЕТЫ:</h3>
-<table border="1" cellpadding="10" width="100%">
+<h3>📊 ЕЩЕ ФОРМУЛЫ:</h3>
+<table border="1" cellpadding="10">
 <tr bgcolor="#34495e" style="color:white">
-<th>Вопрос</th>
-<th>Правильный ответ</th>
-<th>Объяснение</th>
+<th>Формула</th>
+<th>Обозначения</th>
 </tr>
-<tr><td>1</td><td>v = s/t</td><td>Основная формула кинематики</td></tr>
-<tr><td>2</td><td>I = U/R</td><td>Закон Ома для участка цепи</td></tr>
-<tr><td>3</td><td>196 Дж</td><td>A = mgh = 2×9.8×10</td></tr>
-<tr><td>4</td><td>a = Δv/t</td><td>Ускорение = изменение скорости/время</td></tr>
-<tr><td>5</td><td>s = v×t</td><td>Путь = скорость × время</td></tr>
+<tr><td>A = F×s</td><td>Работа = Сила × путь</td></tr>
+<tr><td>P = A/t</td><td>Мощность = Работа / время</td></tr>
+<tr><td>Q = cmΔt</td><td>Теплота = теплоемкость × масса × Δt</td></tr>
+<tr><td>p = F/S</td><td>Давление = Сила / площадь</td></tr>
 </table>
-</div>
-
-<script>
-// Простой скрипт для кнопок
-function showAnswer(id) {
-    var elem = document.getElementById(id);
-    if(elem.style.display == "none" || elem.style.display == "") {
-        elem.style.display = "block";
-    } else {
-        elem.style.display = "none";
-    }
-}
-</script>
+</center>
 
 <br>
 <center>
-<a href="index.html"><button style="background:#2c3e50">← На главную</button></a>
-<a href="zadachi.html"><button style="background:#2ecc71">Ещё задачи →</button></a>
+<a href="index.html"><button style="background:#2c3e50; padding:10px 20px">← На главную</button></a>
 </center>
 
 </body>
