@@ -1,111 +1,94 @@
 <html>
 <head>
-<title>Материалы - Физика ЕГЭ</title>
+<title>Тест по физике</title>
+<script>
+function checkTest() {
+    var score = 0;
+    var total = 3;
+    
+    // Проверка первого вопроса
+    if(document.getElementById('q1c').checked) {
+        score++;
+        document.getElementById('q1result').innerHTML = "✅ Верно! Формула v = s/t";
+    } else {
+        document.getElementById('q1result').innerHTML = "❌ Неверно. Правильно: v = s/t";
+    }
+    
+    // Проверка второго вопроса
+    if(document.getElementById('q2a').checked) {
+        score++;
+        document.getElementById('q2result').innerHTML = "✅ Верно! Это закон Ома";
+    } else {
+        document.getElementById('q2result').innerHTML = "❌ Неверно. Правильно: I = U/R";
+    }
+    
+    // Проверка третьего вопроса
+    var answer = document.getElementById('q3answer').value.toLowerCase();
+    if(answer == "50"  answer == "50 м"  answer == "50 метров") {
+        score++;
+        document.getElementById('q3result').innerHTML = "✅ Верно! s = 5 × 10 = 50 м";
+    } else {
+        document.getElementById('q3result').innerHTML = "❌ Неверно. s = v × t = 5 × 10 = 50 м";
+    }
+    
+    // Показываем результат
+    document.getElementById('result').innerHTML = 
+        "<h3>Ваш результат: " + score + " из " + total + "</h3>" +
+        "<p>" + getMessage(score, total) + "</p>";
+}
+
+function getMessage(score, total) {
+    if(score == total) return "🎉 Отлично! Ты готов к ЕГЭ!";
+    if(score >= total/2) return "👍 Хорошо! Продолжай заниматься!";
+    return "📚 Повтори формулы и попробуй снова!";
+}
+</script>
+<style>
+body { font-family: Arial; background: #f0f8ff; padding: 20px; }
+.question { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px gray; }
+button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; }
+</style>
 </head>
-<body bgcolor="#f0f8ff">
+<body>
+
 <center>
-<h1><font color="#2c3e50">БЕСПЛАТНЫЕ МАТЕРИАЛЫ</font></h1>
+<h1>🎯 ТЕСТ ПО ФИЗИКЕ</h1>
+<p>Проверь свои знания!</p>
 </center>
 
-<table width="100%" bgcolor="#34495e" cellpadding="10">
-<tr>
-<td align="center">
-<font color="white" size="4">
-<b>
-<a href="index.html" style="color:white; text-decoration:none">ГЛАВНАЯ</a> | 
-<a href="kurs.html" style="color:white; text-decoration:none">КУРСЫ</a> | 
-<a href="zadachi.html" style="color:white; text-decoration:none">ЗАДАЧИ</a> | 
-<a href="materialy.html" style="color:white; text-decoration:none">МАТЕРИАЛЫ</a>
-</b>
-</font>
-</td>
-</tr>
-</table>
+<div class="question">
+<h3>1. Формула скорости?</h3>
+<input type="radio" name="q1" id="q1a"> a = v/t<br>
+<input type="radio" name="q1" id="q1b"> F = ma<br>
+<input type="radio" name="q1" id="q1c"> v = s/t<br>
+<div id="q1result" style="margin-top:10px"></div>
+</div>
 
-<br><br>
+<div class="question">
+<h3>2. Закон Ома?</h3>
+<input type="radio" name="q2" id="q2a"> I = U/R<br>
+<input type="radio" name="q2" id="q2b"> P = UI<br>
+<input type="radio" name="q2" id="q2c"> Q = I²Rt<br>
+<div id="q2result" style="margin-top:10px"></div>
+</div>
 
-<center>
-<table width="80%" cellpadding="20">
-<tr>
-<td bgcolor="white" style="border-radius:10px; box-shadow:0 0 10px gray">
-<h2>ОСНОВНЫЕ ФОРМУЛЫ</h2>
-
-<table width="100%" cellpadding="15">
-<tr>
-<td bgcolor="#e3f2fd" width="50%">
-<h3>МЕХАНИКА</h3>
-<pre style="background:#2c3e50; color:white; padding:10px">
-v = s/t
-a = (v-v₀)/t
-F = ma
-</pre>
-</td>
-<td bgcolor="#fff3e0" width="50%">
-<h3>ТЕРМОДИНАМИКА</h3>
-<pre style="background:#2c3e50; color:white; padding:10px">
-PV = νRT
-Q = cmΔT
-η = A/Q
-</pre>
-</td>
-</tr>
-
-<tr><td colspan="2"><br></td></tr>
-
-<tr>
-<td bgcolor="#e8f5e9" width="50%">
-<h3>ЭЛЕКТРИЧЕСТВО</h3>
-<pre style="background:#2c3e50; color:white; padding:10px">
-I = U/R
-P = UI
-A = IUt
-</pre>
-</td>
-<td bgcolor="#f3e5f5" width="50%">
-<h3>ОПТИКА</h3>
-<pre style="background:#2c3e50; color:white; padding:10px">
-n = c/v
-1/F = 1/f+1/d
-λ = v/ν
-</pre>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-
-<tr><td><br></td></tr>
-
-<tr>
-<td bgcolor="white" style="border-radius:10px; box-shadow:0 0 10px gray">
-<h2>СКАЧАТЬ МАТЕРИАЛЫ</h2>
-<p>• <a href="#">Все формулы ЕГЭ (PDF)</a></p>
-<p>• <a href="#">Таблица констант</a></p>
-<p>• <a href="#">Кодификатор 2024</a></p>
-<p>• <a href="#">Демоверсия ЕГЭ</a></p>
-</td>
-</tr>
-
-<tr><td><br></td></tr>
-
-<tr>
-<td bgcolor="white" style="border-radius:10px; box-shadow:0 0 10px gray">
-<h2>ВИДЕОУРОКИ</h2>
-<p>• <a href="https://youtu.be" target="_blank">Механика за 1 час</a></p>
-<p>• <a href="https://youtu.be" target="_blank">Электродинамика</a></p>
-<p>• <a href="https://youtu.be" target="_blank">Решение задач 2 части</a></p>
-</td>
-</tr>
-</table>
-
-<br><br>
+<div class="question">
+<h3>3. Тело движется 10 сек со скоростью 5 м/с. Какой путь?</h3>
+<input type="text" id="q3answer" placeholder="Введите ответ..."><br>
+<div id="q3result" style="margin-top:10px"></div>
+</div>
 
 <center>
-<a href="index.html">
-<button style="background:#3498db; color:white; padding:10px 20px; border:none; font-size:16px">
-← Вернуться на главную
-</button>
-</a>
+<button onclick="checkTest()">ПРОВЕРИТЬ ОТВЕТЫ</button>
+</center>
+
+<center>
+<div id="result" style="margin-top:20px; padding:20px; background:white; border-radius:10px; max-width:500px;"></div>
+</center>
+
+<br>
+<center>
+<a href="index.html"><button style="background:#2c3e50">← На главную</button></a>
 </center>
 
 </body>
