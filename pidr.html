@@ -1,94 +1,113 @@
 <html>
 <head>
 <title>Тест по физике</title>
+<style>
+body { font-family: Arial; background: #f0f8ff; padding: 20px; }
+.question { background: white; padding: 20px; margin: 15px 0; border-radius: 10px; box-shadow: 0 2px 5px gray; }
+.answer { padding: 10px; margin: 5px 0; background: #f8f9fa; border-left: 4px solid #3498db; }
+.correct { background: #d4edda; border-left: 4px solid #28a745; }
+.wrong { background: #f8d7da; border-left: 4px solid #dc3545; }
+button { background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; margin: 5px; }
+.result { background: white; padding: 20px; margin: 20px 0; border-radius: 10px; text-align: center; }
+</style>
 </head>
-<body bgcolor="#f0f8ff">
+<body>
 
 <center>
-<h1><font color="#2c3e50">ТЕСТ ПО ФИЗИКЕ</font></h1>
-<p>Проверь себя!</p>
+<h1>🎯 ТЕСТ ПО ФИЗИКЕ</h1>
+<p>Проверь свои знания! Ответы под вопросами</p>
 </center>
 
-<table width="100%" bgcolor="#34495e" cellpadding="10">
-<tr>
-<td align="center">
-<font color="white" size="4">
-<b>
-<a href="index.html" style="color:white; text-decoration:none">ГЛАВНАЯ</a> | 
-<a href="test.html" style="color:white; text-decoration:none">ТЕСТ</a>
-</b>
-</font>
-</td>
+<div class="question">
+<h3>1. Какая формула для скорости?</h3>
+<div class="answer">
+<strong>v = s/t</strong><br>
+где v - скорость, s - путь, t - время
+</div>
+</div>
+
+<div class="question">
+<h3>2. Что такое закон Ома?</h3>
+<div class="answer correct">
+<strong>✅ I = U/R</strong><br>
+Сила тока прямо пропорциональна напряжению и обратно пропорциональна сопротивлению
+</div>
+<div class="answer wrong">
+❌ P = UI - это формула мощности
+</div>
+<div class="answer wrong">
+❌ Q = I²Rt - это закон Джоуля-Ленца
+</div>
+</div>
+
+<div class="question">
+<h3>3. Тело массой 2 кг подняли на 10 м. Какая работа?</h3>
+<div class="answer">
+<strong>Решение:</strong> A = mgh = 2 × 9.8 × 10 = 196 Дж<br>
+<strong>Ответ: 196 Джоулей</strong>
+</div>
+</div>
+
+<div class="question">
+<h4>4. Формула ускорения?</h4>
+<button onclick="showAnswer('ans1')">Показать ответ</button>
+<div id="ans1" style="display:none; margin-top:10px; padding:10px; background:#e8f4fc">
+a = (v - v₀)/t<br>
+где a - ускорение, v - конечная скорость, v₀ - начальная скорость
+</div>
+</div>
+
+<div class="question">
+<h4>5. Как найти путь при равномерном движении?</h4>
+<button onclick="showAnswer('ans2')">Показать ответ</button>
+<div id="ans2" style="display:none; margin-top:10px; padding:10px; background:#e8f4fc">
+s = v × t<br>
+Пример: при v=5 м/с за t=10 с: s=5×10=50 м
+</div>
+</div>
+
+<center>
+<div class="result">
+<h3>📊 КАК ПРОВЕРИТЬ СЕБЯ:</h3>
+<p>1. Реши задачу на бумаге</p>
+<p>2. Сравни с правильным ответом</p>
+<p>3. Если ошибся - повтори тему</p>
+<p>4. Задай вопрос в комментариях</p>
+</div>
+</center>
+
+<div class="question">
+<h3>📝 ПРАВИЛЬНЫЕ ОТВЕТЫ:</h3>
+<table border="1" cellpadding="10" width="100%">
+<tr bgcolor="#34495e" style="color:white">
+<th>Вопрос</th>
+<th>Правильный ответ</th>
+<th>Объяснение</th>
 </tr>
+<tr><td>1</td><td>v = s/t</td><td>Основная формула кинематики</td></tr>
+<tr><td>2</td><td>I = U/R</td><td>Закон Ома для участка цепи</td></tr>
+<tr><td>3</td><td>196 Дж</td><td>A = mgh = 2×9.8×10</td></tr>
+<tr><td>4</td><td>a = Δv/t</td><td>Ускорение = изменение скорости/время</td></tr>
+<tr><td>5</td><td>s = v×t</td><td>Путь = скорость × время</td></tr>
 </table>
+</div>
+
+<script>
+// Простой скрипт для кнопок
+function showAnswer(id) {
+    var elem = document.getElementById(id);
+    if(elem.style.display == "none" || elem.style.display == "") {
+        elem.style.display = "block";
+    } else {
+        elem.style.display = "none";
+    }
+}
+</script>
 
 <br>
-
 <center>
-<table width="80%" cellpadding="20">
-<tr>
-<td bgcolor="white" style="border-radius:10px; box-shadow:0 0 10px gray">
-
-<h3>1. Формула скорости:</h3>
-<p><input type="radio" name="q1"> a = v/t</p>
-<p><input type="radio" name="q1"> F = ma</p>
-<p><input type="radio" name="q1"> <b>v = s/t</b> ✓ ПРАВИЛЬНО</p>
-<hr>
-
-<h3>2. Закон Ома:</h3>
-<p><input type="radio" name="q2"> <b>I = U/R</b> ✓ ПРАВИЛЬНО</p>
-<p><input type="radio" name="q2"> P = UI</p>
-<p><input type="radio" name="q2"> Q = I²Rt</p>
-<hr>
-
-<h3>3. Реши задачу:</h3>
-<p><b>Условие:</b> v=5 м/с, t=10 с. Найти s.</p>
-<p><b>Решение:</b> s = v × t = 5 × 10 = 50 м</p>
-<p><b>Ответ: 50 метров</b> ✓ ПРАВИЛЬНО</p>
-
-</td>
-</tr>
-
-<tr><td><br></td></tr>
-
-<tr>
-<td bgcolor="#e8f4fc" style="border-radius:10px; padding:20px">
-<h3>ПРОВЕРЬ СЕБЯ:</h3>
-<p>✓ Если отметил все правильные ответы - молодец!</p>
-<p>✓ Если ошибся - повтори формулы</p>
-<p>✓ Реши ещё задачи на странице "Задачи"</p>
-</td>
-</tr>
-
-<tr><td><br></td></tr>
-
-<tr>
-<td bgcolor="white" style="border-radius:10px; padding:20px">
-<h3>ОТВЕТЫ ДЛЯ САМОПРОВЕРКИ:</h3>
-<table border="1" cellpadding="10" width="100%">
-<tr bgcolor="#2c3e50" style="color:white">
-<th>Вопрос</th>
-<th>Ответ</th>
-<th>Баллы ЕГЭ</th>
-</tr>
-<tr><td>1</td><td>v = s/t</td><td>1 балл</td></tr>
-<tr><td>2</td><td>I = U/R</td><td>1 балл</td></tr>
-<tr><td>3</td><td>50 м</td><td>2 балла</td></tr>
-</table>
-<p><br>Максимум за этот тест: 4 балла</p>
-</td>
-</tr>
-</table>
-</center>
-
-<br><br>
-
-<center>
-<a href="index.html">
-<button style="background:#3498db; color:white; padding:10px 20px; border:none; font-size:16px">
-← Вернуться на главную
-</button>
-</a>
+<a href="index.html"><button style="background:#2c3e50">← На главную</button></a>
+<a href="zadachi.html"><button style="background:#2ecc71">Ещё задачи →</button></a>
 </center>
 
 </body>
