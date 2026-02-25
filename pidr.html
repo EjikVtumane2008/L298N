@@ -1,79 +1,156 @@
-<tr><td><b>Геометрическая оптика</b></td><td>Отражение, преломление, линзы</td><td>n=c/v, 1/F=1/f+1/d, sinα/sinβ=n₂/n₁</td><td>17,18,32</td></tr>
-<tr><td><b>Волновая оптика</b></td><td>Интерференция, дифракция, дисперсия</td><td>Δd=kλ, dsinφ=kλ, c=λν</td><td>19</td></tr>
-</table>
+<html>
+<head>
+<title>Инженерный калькулятор</title>
+<style>
+body { font-family: Arial; background: #2c3e50; display: flex; justify-content: center; padding: 20px; }
+.calculator { background: #34495e; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px black; width: 400px; }
+.display { background: #ecf0f1; padding: 15px; border-radius: 10px; margin-bottom: 15px; text-align: right; }
+#result { width: 100%; font-size: 28px; border: none; background: #ecf0f1; text-align: right; outline: none; }
+.memory { background: #2c3e50; color: white; padding: 8px; border-radius: 5px; margin: 5px 0; font-size: 14px; text-align: center; }
+.buttons { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+button { padding: 15px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; background: #7f8c8d; color: white; }
+button:hover { opacity: 0.8; }
+.num { background: #3498db; }
+.op { background: #e67e22; }
+.func { background: #2ecc71; }
+.clear { background: #e74c3c; }
+.equals { background: #f1c40f; color: black; }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+<h2 style="color:white; text-align:center">🔢 ИНЖЕНЕРНЫЙ КАЛЬКУЛЯТОР</h2>
+
+<div class="display">
+<input type="text" id="result" readonly value="0">
 </div>
 
-<!-- 5. КВАНТОВАЯ ФИЗИКА -->
-<div class="section">
-<h2>⚛️ 5. КВАНТОВАЯ ФИЗИКА (8-10 баллов)</h2>
-<p><b>Задания в ЕГЭ:</b> 20-23, 32</p>
+<div class="memory" id="memory">Память: 0</div>
 
-<table>
-<tr><th>Тема</th><th>Подтемы</th><th>Формулы</th><th>Задания</th></tr>
-<tr><td><b>Фотоэффект</b></td><td>Законы фотоэффекта, энергия фотона</td><td>E=hν, hν=Aвых+mv²/2, p=h/λ</td><td>20,21</td></tr>
-<tr><td><b>Атомная физика</b></td><td>Модели атома, постулаты Бора</td><td>En=-13.6/n² эВ, hν=En-Em</td><td>22</td></tr>
-<tr><td><b>Ядерная физика</b></td><td>Радиоактивность, ядерные реакции</td><td>N=N₀·2^(-t/T), E=Δmc²</td><td>23,32</td></tr>
-</table>
+<div class="buttons">
+
+<!-- 1-й ряд -->
+<button class="func" onclick="addFunc('Math.PI')">π</button>
+<button class="func" onclick="addFunc('Math.E')">e</button>
+<button class="clear" onclick="clearAll()">C</button>
+<button class="clear" onclick="backspace()">⌫</button>
+<button class="op" onclick="addOperator('/')">÷</button>
+
+<!-- 2-й ряд -->
+<button class="func" onclick="addFunc('Math.sin(')">sin</button>
+<button class="func" onclick="addFunc('Math.cos(')">cos</button>
+<button class="func" onclick="addFunc('Math.tan(')">tan</button>
+<button class="num" onclick="addNumber('7')">7</button>
+<button class="num" onclick="addNumber('8')">8</button>
+
+<!-- 3-й ряд -->
+<button class="func" onclick="addFunc('Math.asin(')">asin</button>
+<button class="func" onclick="addFunc('Math.acos(')">acos</button>
+<button class="func" onclick="addFunc('Math.atan(')">atan</button>
+<button class="num" onclick="addNumber('4')">4</button>
+<button class="num" onclick="addNumber('5')">5</button>
+
+<!-- 4-й ряд -->
+<button class="func" onclick="addFunc('Math.log(')">ln</button>
+<button class="func" onclick="addFunc('Math.log10(')">log</button>
+<button class="func" onclick="addFunc('Math.sqrt(')">√</button>
+<button class="num" onclick="addNumber('1')">1</button>
+<button class="num" onclick="addNumber('2')">2</button>
+
+<!-- 5-й ряд -->
+<button class="func" onclick="addFunc('Math.pow(')">x^y</button>
+<button class="func" onclick="addFunc('Math.abs(')">|x|</button>
+<button class="func" onclick="addFunc('Math.exp(')">e^x</button>
+<button class="num" onclick="addNumber('0')">0</button>
+<button class="num" onclick="addNumber('3')">3</button>
+
+<!-- 6-й ряд -->
+<button class="op" onclick="addOperator('(')">(</button>
+<button class="op" onclick="addOperator(')')">)</button>
+<button class="func" onclick="memorySave()">M+</button>
+<button class="func" onclick="memoryRecall()">MR</button>
+<button class="equals" onclick="calculate()">=</button>
+
 </div>
 
-<!-- СТРУКТУРА ЭКЗАМЕНА -->
-<div class="section">
-<h2>📝 СТРУКТУРА ЕГЭ 2024</h2>
-
-<table>
-<tr><th>Часть</th><th>Задания</th><th>Тип</th><th>Баллы</th></tr>
-<tr><td><b>Часть 1</b></td><td>1-23</td><td>Краткий ответ (цифра, число, слово)</td><td>34 балла</td></tr>
-<tr><td><b>Часть 2</b></td><td>24-32</td><td>Развернутое решение</td><td>46 баллов</td></tr>
-<tr><td colspan="3" align="right"><b>ИТОГО:</b></td><td><b>80 баллов</b></td></tr>
-</table>
-
-<p><b>Распределение по сложности:</b></p>
-<table>
-<tr><th>Уровень</th><th>Задания</th><th>Что нужно уметь</th></tr>
-<tr><td>Базовый</td><td>1-11, 17-20</td><td>Знать основные формулы, простые расчеты</td></tr>
-<tr><td>Повышенный</td><td>12-16, 21-23</td><td>Комбинировать темы, анализировать графики</td></tr>
-<tr><td>Высокий</td><td>24-32</td><td>Развернутые решения, сложные задачи</td></tr>
-</table>
+<div style="display: grid; grid-template-columns: repeat(4,1fr); gap:8px; margin-top:10px">
+<button class="num" onclick="addNumber('.')">.</button>
+<button class="op" onclick="addOperator('+')">+</button>
+<button class="op" onclick="addOperator('-')">-</button>
+<button class="op" onclick="addOperator('*')">×</button>
 </div>
 
-<!-- ВСЕ ФОРМУЛЫ ПО РАЗДЕЛАМ -->
-<div class="section">
-<h2>📋 ВСЕ ФОРМУЛЫ ДЛЯ 11 КЛАССА</h2>
-
-<table>
-<tr><th>Раздел</th><th>Формулы</th></tr>
-<tr><td><b>Механика</b></td><td>v=s/t, a=Δv/t, s=v₀t+at²/2, F=ma, Fтр=μN, Fупр=kx, p=mv, Eк=mv²/2, A=Fs, N=A/t</td></tr>
-<tr><td><b>Молекулярка</b></td><td>ν=m/M, N=ν·Nₐ, pV=νRT, Q=cmΔT, Q=λm, Q=rm, ΔU=Q-A, η=(Qн-Qх)/Qн</td></tr>
-<tr><td><b>Электричество</b></td><td>F=k|q₁q₂|/r², E=F/q, φ=kq/r, C=q/U, I=U/R, R=ρl/S, P=UI, A=IUt, Fₐ=BIL, Fл=qVB</td></tr>
-<tr><td><b>Оптика</b></td><td>n=c/v, sinα/sinβ=n₂/n₁, 1/F=1/f+1/d, dsinφ=kλ, Δd=kλ</td></tr>
-<tr><td><b>Квантовая</b></td><td>E=hν, hν=Aвых+Eк, p=h/λ, En=-13.6/n², N=N₀·2^(-t/T), E=Δmc²</td></tr>
-</table>
+<p style="color:white; text-align:center; font-size:12px; margin-top:10px">
+Примеры: sin(30*Math.PI/180) = 0.5 | 2^3 = Math.pow(2,3) = 8
+</p>
 </div>
 
-<!-- ПЛАН ПОДГОТОВКИ -->
-<div class="section">
-<h2>📅 ПЛАН ПОДГОТОВКИ НА 11 КЛАСС</h2>
+<script>
+let display = document.getElementById('result');
+let memory = 0;
 
-<table>
-<tr><th>Месяц</th><th>Темы</th><th>Заданий в ЕГЭ</th></tr>
-<tr><td>Сентябрь</td><td>Механика (кинематика, динамика)</td><td>1-4, 24, 25</td></tr>
-<tr><td>Октябрь</td><td>Механика (законы сохранения, статика)</td><td>5-8, 28, 29</td></tr>
-<tr><td>Ноябрь</td><td>Молекулярная физика, МКТ</td><td>9-11, 26</td></tr>
-<tr><td>Декабрь</td><td>Термодинамика</td><td>11, 30</td></tr>
-<tr><td>Январь</td><td>Электростатика, постоянный ток</td><td>12-15, 27</td></tr>
-<tr><td>Февраль</td><td>Магнетизм, электромагнитные колебания</td><td>16, 31</td></tr>
-<tr><td>Март</td><td>Оптика</td><td>17-19, 32</td></tr>
-<tr><td>Апрель</td><td>Квантовая физика</td><td>20-23, 32</td></tr>
-<tr><td>Май</td><td>Повторение, пробные ЕГЭ</td><td>Все задания</td></tr>
-</table>
-</div>
+function addNumber(num) {
+    if(display.value == '0' && num != '.') {
+        display.value = num;
+    } else {
+        display.value += num;
+    }
+}
 
-<!-- КНОПКИ -->
-<br>
-<center>
-<a href="index.html"><button style="background:#3498db; color:white; padding:12px 30px; border:none; border-radius:5px; font-size:16px">← ГЛАВНАЯ</button></a>
-<a href="zadachi.html"><button style="background:#2ecc71; color:white; padding:12px 30px; border:none; border-radius:5px; font-size:16px">ЗАДАЧИ ПО ТЕМАМ →</button></a>
-</center>
+function addOperator(op) {
+    display.value += op;
+}
+
+function addFunc(func) {
+    display.value += func;
+}
+function clearAll() {
+    display.value = '0';
+}
+
+function backspace() {
+    display.value = display.value.slice(0, -1);
+    if(display.value == '') display.value = '0';
+}
+
+function calculate() {
+    try {
+        let result = eval(display.value);
+        display.value = result;
+    } catch(e) {
+        display.value = 'Ошибка';
+    }
+}
+
+function memorySave() {
+    try {
+        memory = eval(display.value);
+        document.getElementById('memory').innerHTML = 'Память: ' + memory;
+    } catch(e) {
+        // ignore
+    }
+}
+
+function memoryRecall() {
+    display.value += memory;
+}
+
+// Поддержка клавиатуры
+document.addEventListener('keydown', function(e) {
+    if(e.key >= '0' && e.key <= '9') addNumber(e.key);
+    if(e.key == '.') addNumber('.');
+    if(e.key == '+') addOperator('+');
+    if(e.key == '-') addOperator('-');
+    if(e.key == '*') addOperator('*');
+    if(e.key == '/') addOperator('/');
+    if(e.key == '(') addOperator('(');
+    if(e.key == ')') addOperator(')');
+    if(e.key == 'Enter') calculate();
+    if(e.key == 'Escape') clearAll();
+    if(e.key == 'Backspace') backspace();
+});
+</script>
 
 </body>
 </html>
